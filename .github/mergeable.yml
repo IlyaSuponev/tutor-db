@@ -1,0 +1,53 @@
+version: 2
+mergeable:
+  - when: issues.opened
+    validate:
+      - do: title
+        begins_with:
+          match: [ 'AUTH', 'UI', 'DATABASE', 'CORE' ]
+      - do: label
+        must_include:
+          regex: bug|enhancement
+    fail:
+      - do: comment
+        payload:
+          body: >
+            The following problems were found with this issue:
+              - Title must begin with `AUTH`, `UI`, `CORE` or `DATABASE`
+              - The issue should either be labeled `bug` or `enhancement`  
+
+  - when: pull_request.opened
+    name: "Greet a contributor"
+    validate: []
+    pass:
+      - do: comment
+        payload:
+          body: >
+            Thanks for creating a pull request! A maintainer will review your changes shortly. Please don't be discouraged if it takes a while.
+
+  - when: pull_request.*, pull_request_review.*
+    name: 'Approval check'
+    validate:
+      - do: approvals
+        min:
+          count: 1
+          message: "❌ At least 1 approvals are required before the meeting"
+        required:
+          owners: true
+          message: "❌ Requires approval from the coder"
+        block:
+          changes_requested: true
+          message: "⚡ Merge is blocked: there is a request for changes"
+  
+  - when: pull_request.*
+    validate:
+      - do: title
+        must_exclude:
+          regex: ^\[WIP\]
+      - do: label
+        must_exclude:
+          regex: 'wip'
+      - do: description
+        no_empty:
+          enabled: true
+          message: Description matter and should not be empty. Provide detail with **what** was changed, **why** it was changed, and **how** it was changed.
