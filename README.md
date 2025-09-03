@@ -66,6 +66,8 @@ Calculation results are displayed in the form of graphs.
 
 Installation and launch instructions will be provided by the copyright holder.
 
+---
+
 ## Tech Stack
 
 * **Language:** Kotlin
@@ -74,7 +76,12 @@ Installation and launch instructions will be provided by the copyright holder.
 * **ORM / Database Layer:** JetBrains Exposed
 * **Database:** SQLite
 
+## Acknowledgments
+
+Tutor DB wouldn't be possible without the valuable contributions from the community. A heartfelt thank you to everyone who has helped!
+
+A full list of contributors is maintained in the [CONTRIBUTORS.md](CONTRIBUTORS.md) file.
+
 ## Contacts
 
 For licensing and usage inquiries, please contact the copyright holder.
-
