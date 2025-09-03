@@ -1,17 +1,20 @@
 import io.gitlab.arturbosch.detekt.Detekt
+import org.gradle.internal.impldep.bsh.commands.dir
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.dokka.DokkaDefaults.pluginsConfiguration
 
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.composeHotReload)
+    alias(libs.plugins.jetbrains.compose.multiplatform)
+    alias(libs.plugins.jetbrains.compose.hotReload)
+    alias(libs.plugins.jetbrains.kotlin.compose.compiler)
+    alias(libs.plugins.jetbrains.kotlin.multiplatform)
+    alias(libs.plugins.jetbrains.dokka)
     alias(libs.plugins.linter.detekt)
 }
 
 kotlin {
     jvm()
-    
+
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -35,6 +38,20 @@ kotlin {
 
 dependencies {
     detektPlugins(libs.linter.detekt.formatting)
+}
+
+// build.gradle.kts
+
+dokka {
+    moduleName.set("TutorDB")
+    dokkaPublications.html {
+        suppressInheritedMembers.set(true)
+        failOnWarning.set(true)
+        outputDirectory.set(file("${rootDir}/docs/dokka"))
+    }
+    pluginsConfiguration.html {
+        footerMessage.set("(c) Suponev Ilya")
+    }
 }
 
 detekt {
