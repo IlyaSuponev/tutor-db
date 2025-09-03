@@ -75,6 +75,7 @@ Installation and launch instructions will be provided by the copyright holder.
 * **IDE:** JetBrains IntelliJ IDEA
 * **ORM / Database Layer:** JetBrains Exposed
 * **Database:** SQLite
+* **Linter:** Detekt
 
 ## Acknowledgments
 

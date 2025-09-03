@@ -1,7 +1,7 @@
 package suponev.ilya.tutor_db
 
-class JVMPlatform {
+class Platform {
     val name: String = "Java ${System.getProperty("java.version")}"
 }
 
-fun getPlatform() = JVMPlatform()
+fun getPlatform() = Platform()

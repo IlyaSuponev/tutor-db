@@ -1,0 +1,81 @@
+# https://github.com/detekt/detekt/blob/main/detekt-core/src/main/resources/default-detekt-config.yml
+
+build:
+    maxIssues: 0
+
+formatting:
+    ArgumentListWrapping:
+        active: false
+    EnumEntryNameCase:
+        active: false
+    MaximumLineLength:
+        maxLineLength: 166
+    MultiLineIfElse:
+        active: true
+        autoCorrect: true
+    ParameterListWrapping:
+        active: true
+        autoCorrect: true
+        indentSize: 4
+        maxLineLength: 166
+    NoWildcardImports:
+        active: false
+    NoMultipleSpaces:
+        active: true
+        autoCorrect: false
+    PropertyWrapping:
+        active: false
+    SpacingAroundUnaryOperator:
+        active: true
+        autoCorrect: true
+    Wrapping:
+        active: true
+        maxLineLength: 166
+    Filename:
+        active: false
+    PackageName:
+        active: false
+
+style:
+    DestructuringDeclarationWithTooManyEntries:
+        active: true
+        maxDestructuringEntries: 4
+    MaxLineLength:
+        active: false
+        maxLineLength: 166
+    ReturnCount:
+        active: false
+    WildcardImport:
+        active: false
+    MagicNumber:
+        ignoreNamedArgument: true
+        ignoreRanges: true
+    ThrowsCount:
+        active: false
+
+complexity:
+    LongParameterList:
+        functionThreshold: 8
+        constructorThreshold: 8
+        ignoreDefaultParameters: true
+    ComplexCondition:
+        threshold: 6
+    TooManyFunctions:
+        thresholdInClasses: 40
+        thresholdInFiles: 100
+        thresholdInObjects: 28
+        thresholdInInterfaces: 12
+    CyclomaticComplexMethod:
+        threshold: 26
+    LongMethod:
+        threshold: 90
+
+naming:
+    ConstructorParameterNaming:
+        active: false
+    FunctionNaming:
+        functionPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    TopLevelPropertyNaming:
+        constantPattern: '[A-Z][A-Za-z0-9]*'
+    PackageNaming:
+        packagePattern: '[a-z]+(\.[a-z][_A-Za-z0-9]*)*[a-z]'
