@@ -1,21 +1,5 @@
 version: 2
 mergeable:
-  - when: issues.opened
-    validate:
-      - do: title
-        begins_with:
-          match: [ 'AUTH', 'UI', 'DATABASE', 'CORE' ]
-      - do: label
-        must_include:
-          regex: bug|enhancement
-    fail:
-      - do: comment
-        payload:
-          body: >
-            The following problems were found with this issue:
-              - Title must begin with `AUTH`, `UI`, `CORE` or `DATABASE`
-              - The issue should either be labeled `bug` or `enhancement`  
-
   - when: pull_request.opened
     name: "Greet a contributor"
     validate: []
